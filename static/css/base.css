@@ -11,6 +11,7 @@ body {
 
 .icon-edit{
     background: url('/media/logo.png');    
+    background-size: contain;
    
 }
 
@@ -45,7 +46,9 @@ body {
 .border-black {
     border: 1px solid black !important;
 }
-
+.nav-item{
+    margin-left: 18px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

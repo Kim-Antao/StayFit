@@ -38,41 +38,54 @@
   </head>
   <body>
     <header class="container-fluid fixed-top">
-      <div class="row">
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                <h2 class="logo-font text-black my-0"><strong>S</strong>tay<strong>F</strong>it</h2>
+        <!-- Just an image -->
+        <nav class="navbar navbar-expand-lg w-100">
+            <a class="navbar-brand" href="#">
+                <img src="/media/logo.png" width="80" height="60" alt="" loading="lazy">
             </a>
-        </div>
-        <div class="col-12 col-lg-8 my-auto py-1 py-lg-0">
-            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-              <li class="list-inline-item">
-                <a href="" class="dropdown-item">Plan</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="" class="dropdown-item">Shop</a>
-            </li>   
-              <li class="list-inline-item dropdown">
-                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg "></i>           
+            </button>
+            <div class="collapse navbar-collapse d-flex-lg justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav text-center text-lg-right my-0 ">
+                  <li class="nav-item">
+                    <a class="nav-link text-black" href="#">
                         <div class="text-center">
-                            <div><i class="fas fa-user fa-lg"></i></div>
-                            <p class="my-0">My Account</p>
+                            <div><i class="fas fa-medal fa-lg"></i></div>
+                            <p class="my-0">Plan</p>
                         </div>
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-black" href="#">
+                        <div class="text-center">
+                            <div><i class="fas fa-store fa-lg"></i></div>
+                            <p class="my-0">Shop</p>
+                        </div>
+                    </a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                            <p class="my-0">Account</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                                <a href="" class="dropdown-item">Product Management</a>
+                                <a href="" class="dropdown-item text-black">Product Management</a>
                             {% endif %}
-                            <a href="" class="dropdown-item">My Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            <a href="" class="dropdown-item text-black">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item text-black">Logout</a>
                         {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item text-black">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item text-black">Login</a>
                         {% endif %}
                     </div>
-                </li>
-                <li class="list-inline-item">
+                  </li>
+                  <li class="nav-item">
                     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
                         <div class="text-center">
                             <div><i class="fas fa-shopping-bag fa-lg"></i></div>
@@ -85,10 +98,10 @@
                             </p>
                         </div>
                     </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+                  </li>
+                </ul>
+              </div>
+        </nav>
     </header>
 
     {% if messages %}
