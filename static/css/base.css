@@ -46,6 +46,19 @@ body {
 .border-black {
     border: 1px solid black !important;
 }
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
 .nav-item{
     margin-left: 18px;
 }
@@ -56,14 +69,16 @@ body {
 	top: 0;
 	left: 0;
 	position: fixed;
-	/*
     background: white;
-	*/
-    background: url('/media/home-situp.jpg') no-repeat center center fixed;
+
+    /*
+    background: url('/media/home-situp.jpg') no-repeat center center ;
     background-size: cover;
-    opacity: 0.2;
+    */
+    opacity: 0.5;
     z-index: -1;
 }
+
 
 /* -------------------------------- Media Queries */
 
@@ -76,16 +91,12 @@ body {
   
   /* fixed top navbar only on medium and up */
   @media (min-width: 992px) {
-      .fixed-top-desktop-only {
-          position: fixed;
-          top: 0;
-          right: 0;
-          left: 0;
-          z-index: 1030;
-      }
-  
-      .header-container {
+    
+      .header-container, .bag-content-spacing {
           padding-top: 100px;
+      }
+      .content-spacing{
+          padding-top: 200px;
       }
   }
 
