@@ -39,7 +39,7 @@
   <body>
     <header class="container-fluid fixed-top">
         <!-- Just an image -->
-        <nav class="navbar navbar-expand-lg w-100">
+        <nav class="navbar bg-white navbar-expand-lg w-100">
             <a class="navbar-brand" href="#">
                 <img src="/media/logo.png" width="80" height="60" alt="" loading="lazy">
             </a>
@@ -49,24 +49,31 @@
             </button>
             <div class="collapse navbar-collapse d-flex-lg justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav text-center text-lg-right my-0 ">
-                  <li class="nav-item">
-                    <a class="nav-link text-black" href="#">
+                  <li class="nav-item ">
+                    <a class="nav-link text-black" href="#" >
                         <div class="text-center">
                             <div><i class="fas fa-medal fa-lg"></i></div>
                             <p class="my-0">Plan</p>
                         </div>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-black" href="#">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-black" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
                             <div><i class="fas fa-store fa-lg"></i></div>
                             <p class="my-0">Shop</p>
                         </div>
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">  
+                        <a href="{% url 'products' %}?category=Accessories,Apparel,Equipment,Nutrition" class="dropdown-item text-black">All products</a>
+                        <a href="{% url 'products' %}?category=Accessories" class="dropdown-item text-black">Accessories</a>         
+                        <a href="{% url 'products' %}?category=Apparel" class="dropdown-item text-black">Apparel</a>
+                        <a href="{% url 'products' %}?category=Equipment" class="dropdown-item text-black">Equipment</a>
+                        <a href="{% url 'products' %}?category=Nutrition" class="dropdown-item text-black">Nutrition</a>
+                    </div>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
                             <div><i class="fas fa-user fa-lg"></i></div>
                             <p class="my-0">Account</p>

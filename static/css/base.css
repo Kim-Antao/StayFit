@@ -49,6 +49,22 @@ body {
 .nav-item{
     margin-left: 18px;
 }
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	/*
+    background: white;
+	*/
+    background: url('/media/home-situp.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -69,6 +85,17 @@ body {
       }
   
       .header-container {
-          padding-top: 164px;
+          padding-top: 100px;
       }
   }
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
+    }
+}
