@@ -72,6 +72,11 @@ body {
     color: white !important;
 }
 
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 .nav-item{
     margin-left: 18px;
 }
@@ -83,11 +88,6 @@ body {
 	left: 0;
 	position: fixed;
     background: white;
-
-    /*
-    background: url('/media/home-situp.jpg') no-repeat center center ;
-    background-size: cover;
-    */
     opacity: 0.5;
     z-index: -1;
 }
