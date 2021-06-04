@@ -34,9 +34,18 @@ body {
 .main-logo-link {
     width: fit-content;
 }
-
+.navbar-color:hover{
+    text-shadow: 0px 0px 5px rgb(204, 204, 204);
+}
 .text-black {
     color: #000 !important;
+}
+
+.text-orange{
+    color: rgb(255, 123, 0);
+}
+.bg-orange{
+    background-color: rgb(255, 123, 0);
 }
 
 .text-white{
@@ -91,7 +100,80 @@ body {
     opacity: 0.5;
     z-index: -1;
 }
+.fixed-after-nav{
+    position: fixed;
+    top: 86px;
+    right: 0;
+    left: 0;
+    z-index: 1025;
+}
+/* ------------------------------- bootstrap toasts */
 
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 
 /* -------------------------------- Media Queries */
 
@@ -105,11 +187,11 @@ body {
   /* fixed top navbar only on medium and up */
   @media (min-width: 992px) {
     
-      .header-container, .bag-content-spacing {
-          padding-top: 100px;
+    .bag-content-spacing {
+          margin-top: 86px;
       }
       .content-spacing{
-          padding-top: 200px;
+          margin-top: 200px;
       }
   }
 

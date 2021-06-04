@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 AUTHENTICATION_BACKENDS = [
 
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'plan',
+    'checkout',
 ]
 
 SITE_ID = 1
