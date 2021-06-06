@@ -1,11 +1,12 @@
 from django import forms
-from .models import Order
+from .models import Subscriber
 
 
-class OrderForm(forms.ModelForm):
+class SubscriberForm(forms.ModelForm):
     class Meta:
-        model = Order
-        fields = ('full_name', 'email', 'phone_number',
+        model = Subscriber
+        fields = ('full_name', 'age', 'height', 'weight', 'gender',
+                  'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',
                   'county',)
@@ -18,6 +19,10 @@ class OrderForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'full_name': 'Full Name',
+            'age': 'Age',
+            'height': 'Height',
+            'weight': 'Weight',
+            'gender': 'Gender',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
             'country': 'Country',

@@ -27,13 +27,19 @@
                 {% for p in plan %}
                 <div class="col-sm-6 col-md-6 col-lg-4 ">
                     <div class="card h-100 border-0">
-                        <h5 class="card-title">{{p.name}}</h5>
-                        {% for p_price in plan_pricing %}
-                        {% if p == p_price.plan %}
-                        <p class="card-text"> {{p_price.price}} {{p_price.payment_period}}</p>  
-                        {% endif %}
-                        {% endfor %}
-                        <a href="#" class="btn btn-primary">Button</a>
+                        <div class="card-header">
+                            <h3 class="card-title text-center">{{p.name}}</h3>
+                        </div>
+                        <div class="card-body">
+                            {% for p_price in plan_pricing %}
+                            {% if p == p_price.plan %}
+                            <p class="card-text text-center"> 
+                                <strong>£{{p_price.price}}</strong> /{{p_price.payment_period}}
+                                <a href="{{% url 'subscribe' %}}" class="btn btn-black">Buy</a>
+                            </p>  
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:1 %}
