@@ -3,17 +3,17 @@ import uuid
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from plan.models import Plan, Plan_category
+from plan.models import Plan, Plan_pricing
 
 
 gender_options = [
-    ("female", "fe"),
-    ("male", "ma"),
+    ("female", "Female"),
+    ("male", "Male"),
 ]
 
 
 class Subscriber(models.Model):
-    plan_category = models.ForeignKey(Plan_category, null=False, blank=False, on_delete=models.CASCADE)
+    plan_pricing = models.ForeignKey(Plan_pricing, null=False, blank=False, on_delete=models.CASCADE)
     plan = models.ForeignKey(Plan, null=False, blank=False, on_delete=models.CASCADE)
     subscription_number = models.CharField(max_length=32, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)

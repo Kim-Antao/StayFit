@@ -33,10 +33,14 @@
                         <div class="card-body">
                             {% for p_price in plan_pricing %}
                             {% if p == p_price.plan %}
-                            <p class="card-text text-center"> 
-                                <strong>£{{p_price.price}}</strong> /{{p_price.payment_period}}
-                                <a href="{{% url 'subscribe' %}}" class="btn btn-black">Buy</a>
-                            </p>  
+                            <div class="row card-text text-center mb-1"> 
+                                <div class="col-8">
+                                    <strong>£{{p_price.price}}</strong> /{{p_price.payment_period}}
+                                </div>
+                                <div class="col-4">
+                                    <a href="{% url 'subscribe' %}" class="btn btn-black">Buy</a>
+                                </div>
+                            </div>  
                             {% endif %}
                             {% endfor %}
                         </div>

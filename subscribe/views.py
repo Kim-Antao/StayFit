@@ -9,7 +9,7 @@ def subscribe(request):
     template = 'subscribe/subscribe.html'
 
     context = {
-        'subscribe_form': subscriber_form
+        'subscribe_form': subscriber_form,
     }
 
     return render(request, template, context)
