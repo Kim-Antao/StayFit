@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container fixed-top">
+    <div class="container header-container fixed-after-nav px-0">
         <div class="row bg-white">
             <div class="col-12 text-center mt-3">
                 <h2 class="logo-font"> 
@@ -38,7 +38,7 @@
                                     <strong>£{{p_price.price}}</strong> /{{p_price.payment_period}}
                                 </div>
                                 <div class="col-4">
-                                    <a href="{% url 'subscribe' %}" class="btn btn-black">Buy</a>
+                                    <a href="{% url 'subscribe' %}?plan={{p_price.id}}" class="btn btn-black">Buy</a>
                                 </div>
                             </div>  
                             {% endif %}
