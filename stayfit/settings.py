@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-cdd^%j7hvykkf=b7$539p3zqr8(t!_21$kz1d5)hpt!6$5%h&u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['stay--fit', 'localhost']
+ALLOWED_HOSTS = ['stay--fit.heroku.com', 'localhost']
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
