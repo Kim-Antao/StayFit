@@ -53,10 +53,10 @@
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                            {% if product.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                            {% else %}
+                                            {% if product.get_rating == 0 %}
                                                 <small class="text-muted">No Rating</small>
+                                            {% else %}
+                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating|floatformat:1 }} / 5</small>
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">

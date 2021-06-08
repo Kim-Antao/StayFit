@@ -1,0 +1,1 @@
+[{"model": "plan.payment_period", "pk": 1, "fields": {"name": "Monthly"}}, {"model": "plan.payment_period", "pk": 2, "fields": {"name": "Quaterly"}}, {"model": "plan.payment_period", "pk": 3, "fields": {"name": "Yearly"}}]

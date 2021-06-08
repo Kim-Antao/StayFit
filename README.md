@@ -1,59 +1,210 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# StayFit
 
-Welcome Kim-Antao,
+Struggling to gain weight? or Gained a few extra kgs during lockdown? You have come to the right place.
+Waiting for you is a customised excercise and nutrition plan-all you need to get back in shape at home.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
 
-## Gitpod Reminders
+Subscribe and see other members reach their targets.  
+#motivate_and_get_motivated.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Stay safe and workout at home 
 
-`python3 -m http.server`
+## UX
 
-A blue button should appear to click: _Make Public_,
+This service is created keeping into consideration all dietary requirements.
+The user is provided with a list of subscriptions to choose from. 
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Below are some user stories :
+1. __User wants to signup :__   
+    User will choose the signup option from the navigation, fill the fields and click on the signup button. if the field values are valid, a confirmation
+    email will be sent to the user. Upon confirmation, the user's information will be stored on their profile page
 
-A blue button should appear to click: _Make Public_,
+1. __User wants to login :__   
+    User chooses login from navigation, will be redirected to the login form. The user will enter the details and press on submit. If the values are correct,
+    the user will be logged in to the system
 
-Another blue button should appear to click: _Open Browser_.
+1. __User wants to update his profile :__   
+    User clicks on my account in the navigation, chooses profile. Updates the desired fields, If the values entered are valid, a success message will be displayed.
+    If not an error message will be displayed.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+1. __User wants to buy a product :__  
+    User chooses the desired option from the shop button in the navbar then selects the product which takes the user to the product detail page.
+    User can then choose the size (if applicable) and the quanity and click on add to bag. Here user can update his/her bag contents by changing the quantity and clicking on update or clicking on remove to delete the item from the bag. User then clicks on the checkout button, which will ask the customer to enter details. If the card details are wrong, an error message will be displayed and if the payment is successful, a confirmation message will be displayed, which will contain all the order and delivery details. User will also receive a confirmation email mentioning the order details.
+      
+2. __User wants to rate an item:__  
+    User logs in. User chooses the desired option from the shop button in the navbar then selects the product which takes the user to the product detail page.
+    User fills the review form and clicks on submit. If submitted without rating, an error message will appear, telling the user that the minimum rating is 1. If submitted with correct rating values, the values are stored in the database.
 
-To log into the Heroku toolbelt CLI:
+1. __User wants to view the previous order :__ 
+    User will login from the navigation, go to the profile page, if there have been orders made in the past, the details will be displayed in the table next to their delivery information.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+1. __User wants to buy a subscription :__ 
+    user chooses between excercise and nutrition plan, a list of plans are then displayed chooses the desired service, gets redirected to a registration page if logged in. if not logged in, the user will be asked to login. upon registration, if the user doesnt have an active subscription for the same plan, it will lead him up to the billing page. Once the form is submitted, if all details entered are valid,
+    it will print a success message.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidently make it public then you can create a new one with _Regenerate API Key_.
+1. __User wants to view activity board :__ 
+    user clicks on account and chooses activity board from the dropdown. A page is displayed with all the members and the membership they chose.
 
-## Updates Since The Instructional Video
+1. __User wants to log out :__ 
+    User chooses the logout option from the navigation, a page will be displayed asking the user if they are sure, if yes they will be logged out of the system.
+    If the user clicks on cancel the user will still be logged in
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+#### During the early stages, rough wireframes were made using balsamiq  
+* [Desktop](static/pdf/stayfitdesktop_wireframe.pdf)
+* [Android](static/pdf/stayfitandroid_wireframe.pdf)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Features
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Existing Features:
+Navigation: allows the user to choose between what they want to acheive by clicking on the tab (code in: base.html).
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Search: allows the user to look for a product by typing any keyword (code in: product.html).
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Buy products: allows users to buy a product by entering the checkout form (code in: checkout app)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+rating: allows the user to rate the products if they have logged in (code in: product app)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+profile: allows the user to view their user details and the order details (code in: profile app)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+save details: allows the user to save their checkout information (code in: checkout app)
 
----
+subscribe: allows the users to choose subscription plans and choose the period of payment
 
-Happy coding!
+activity board: allows the users to view the progress of other members
+
+login/signup: allows the users to login to an account/create an account to buy products and services by filling out 
+the username and password
+
+### Features Left to Implement
+* Have a chart to display the activity board information in a more user friendly way 
+* Display product deals
+* calculate BMI instead of asking the user
+* Display a message to let the user know that the rating has been saved
+* Option to choose different size of Nutrition products
+* Display more than one image per product
+* Option to apply discount codes
+* Trial period feature for subscription
+* Allow the site owner to add, update and delete plans
+* Sorting feature on products page
+
+## Technologies Used
+
+**HTML:** Hypertext Markup Language (HTML) was used to create the webpage. 
+
+**CSS:** Cascading Style Sheets (CSS) was used to add customised styling to the webpage.
+
+**JavaScript:**  JavaScript enables interactive web pages and is an essential part of web applications. It was used to add interactive functionality to the webpage
+
+**Python:** Python was used for the server side web development. Also to connect to the database and perform various operations of its data.
+
+**Django:** [Django](https://www.djangoproject.com/) is a python based framework which was used in this project as it follows the Model Template View architectural pattern
+
+**Bootstrap:** [Bootstrap](https://getbootstrap.com/) was used to create responsive webpages with the help of pre built classes
+
+**FontAwesome:** [FontAwesome](https://fontawesome.com/) was used for icons
+
+**Stripe:** [Stripe](https://stripe.com/gb?utm_campaign=paid_brand-UK%20%7C%20en%20%7C%20Search%20%7C%20Brand%20%7C%20Stripe&utm_medium=cpc&utm_source=bing&utm_content=&utm_term=EXA_Stripe%20General-stripe-e&utm_adposition=&utm_device=c&utm_content=xR7wn1XB-dc|pcrid|79164938360905|pkw|stripe|pmt|be|slid||productid||pgrid|1266637841642678|ptaid|kwd-79165156391371:loc-188|&msclkid=080ea1556ff41fee9c45fec9d0e69058)
+was used to implement single and subscription payment methods.
+
+**Balsamiq:** [Balsamiq](https://balsamiq.com/) was used to create wireframe. It was used in the initial stages of the project visualisation. It was used to put the idea of a page decide the layout and flow of the project. 
+
+**JQuery:** [JQuery](https://jquery.com/) was used to simplify DOM manipulation.
+
+## Testing
+
+Manual testing was done on all the forms of this project
+
+**Sign form:**  
+Try to submit the empty form and verify that an error message about the required fields appears.  
+Try to submit the form with invalid field values and verify that a relevant error message appears.  
+Try to submit the form with user details already present in the database and verify that a relevant error message appears.  
+Try to submit the form with all inputs valid and verify that the values get stored in the database. 
+
+**Login form:**   
+Try to submit the empty form and verify that an error message about the required fields appears.  
+Try to submit the form with invalid field values and verify that a relevant error message appears.  
+Try to submit the form with user details not present in the database and verify that a relevant error message appears.  
+Try to submit the form with all inputs valid and verify that the success message appears. 
+
+**Checkout form:**  
+Try to submit the required fields with no data and verify that an error message is displayed.  
+Try to submit the form with incorrect bank details and verify that an error message is displayed.
+
+**Add product:**  
+Try to add a product with required field left blank and verify that the appropriate message appears  
+Try to add a product with valid field values and verify that they are saved in the database
+
+**Delete product:**     
+Click on the link to delete and verify that the product gets deleted from the database.
+
+**Edit product:**  
+Try to edit a product with required field left blank and verify that the appropriate message appears  
+Try to edit a product with valid field values and verify that they are saved in the database
+
+
+## Deployment
+
+This project is used using [Heroku](https://dashboard.heroku.com/apps).  
+Steps taken to deploy this project are as follows:  
+* Create an app in Heroku  
+* In the terminal typed the follow commands:  
+    1.  pip3 install dj_database_url
+    1. pip3 install psycog2-binary
+    1. pip3 freeze > requirements.txt
+    1. import dj_database_url in virtual_gym/settings.py
+    1. add the default database in virtual_gym/settings.py
+    1. migrate the changes
+    1. load the data (ex: python3 <span>manage.py</span> loaddata categories)
+    1. pip3 install gunicorn
+    1. pip3 freeze --local > requirements
+    1.  echo web: gunicorn virtual_gym.wsgi:application > Procfile
+    1. heroku login  
+    1. in <span>settings.py</span> add the link in allowed host
+    1. git add .
+    1. git commit -m "initial commit"
+    1. heroku git ::remote
+    1. git push heroku master
+    1. create an AWS account
+    1. connect Django to s3
+    
+* In the herko app, go to settings:
+    1. IP = 0.0.0.0
+    1. PORT = 5000
+    1. set the secret keys
+
+ 
+* All the environment values have been saved in the env.py file
+
+## Credits
+
+
+### Content 
+The product description are copied from:
+* [Gym Shark](https://uk.gymshark.com/)
+* [My Protein](https://www.myprotein.com/)
+
+### Media
+The product images are taken from:
+* [Gym Shark](https://uk.gymshark.com/)
+* [My Protein](https://www.myprotein.com/)
+
+The backdrop image is taken from:
+* [WORKEST](https://www.zenefits.com/workest/helping-your-work-from-home-employees-stay-fit-and-healthy/)
+
+
+## Acknowledgements
+* [Reviews](https://www.youtube.com/channel/UCfVoYvY8BfTDeF63JQmQJvg)
+* [JustDjango](https://www.youtube.com/watch?v=zu2PBUHMEew&t=1803s)
+* [Forms](https://www.youtube.com/watch?v=3XOS_UpJirU&feature=emb_logo)
+* [Django Lessons](https://www.youtube.com/watch?v=Mw__Pw1iGgA)
+
+I received inspiration for this project from:  
+* [Fiit Gym](https://fiit.tv/)
+* [Boutique Ado](https://github.com/ckz8780/boutique_ado_v1/tree/b5e178737596a1a1cf5be50345dc770b119918fd)
+
+Many of the development problems have been rectifies with the guidance of 
+* [StackOverflow](https://stackoverflow.com/)
+* [code Institue tutors](https://courses.codeinstitute.net/login)

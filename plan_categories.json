@@ -1,0 +1,1 @@
+[{"model": "plan.plan_category", "pk": 1, "fields": {"name": "Exercise"}}, {"model": "plan.plan_category", "pk": 2, "fields": {"name": "Nutrition"}}]

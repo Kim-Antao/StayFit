@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import dj_database_url
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-cdd^%j7hvykkf=b7$539p3zqr8(t!_21$kz1d5)hpt!6$5%h&u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stay--fit', 'localhost']
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
@@ -123,14 +125,23 @@ WSGI_APPLICATION = 'stayfit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+# }
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
-
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -189,3 +200,4 @@ STRIPE_SUBS_WH_SECRET = os.getenv('STRIPE_SUBS_WH_SECRET', '')
 STRIPE_CARDIO_MONTH = os.getenv('STRIPE_CARDIO_MONTH', '')
 STRIPE_CARDIO_QUATER = os.getenv('STRIPE_CARDIO_QUATER', '')
 STRIPE_CARDIO_YEAR = os.getenv('STRIPE_CARDIO_YEAR', '')
+DEFAULT_FROM_EMAIL = 'Stayfit@example.com'
