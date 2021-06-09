@@ -187,7 +187,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-if 'USE-AWS' in os.environ:
+if 'USE_AWS' in os.environ:
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'stay--fit'
     AWS_S3_REGION_NAME = 'eu-west-2'
