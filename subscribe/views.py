@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
@@ -47,7 +47,7 @@ def subscribe(request):
             amount=plan_price,
             currency=settings.STRIPE_CURRENCY,
             payment_method=['card'],
-        ) 
+        )
 
     subscriber_form = SubscriberForm()
     template = 'subscribe/subscribe.html'
@@ -57,7 +57,6 @@ def subscribe(request):
         'plan': plan,
         'stripe_public_key': 'pk_test_51HgvVyJHYp7lY4yyAxFeul2hZaWaTZV7eU5Aau4SJAFfQQHY8TFY9ElcpY73q8pjIg1YqFDFRp1inPevDgHOYmnn00rAzqt7Z1',
         'client_secret': 'test client secret',
-        'customer_email': request.user.email,
 
     }
 
