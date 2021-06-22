@@ -29,7 +29,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mt-md-5">
-                    <p class="mb-0">{{ product.name }}</p>
+                    <p class="mb-0"><h4>{{ product.name }}</h4></p>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                     {% if product.get_rating %}
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.get_rating }} / 5</small>
@@ -96,69 +96,35 @@
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
-                            <div class="col-12 mt-5">
-                                <h4><strong>Reviews</strong></h4>
-                                <div class="list-group">
-                                    {% for review in product.reviews.all %}
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                      <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{{review.name}}</h5>
-                                      </div>
-                                      <p class="mb-1">
-                                        Stars: {{review.stars}} /5  
-                                        Content: {{review.content}}
-                                    </p>
-                                      <small class="text-muted">Reviewed by {{review.user}}.</small>
-                                    </a>
-                                    {% empty %}
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                          <h5 class="mb-1">This product has 0 reviews</h5>
-                                        </div>
-                                        <p class="mb-1">
-                                          Be the first one to rate this product
-                                      </p>
-                                      </a>
-                                    {% endfor %}
-
-                                </div>         
-                                <div class="notification space-below">
-                                    {% if request.user.is_authenticated %}
-                                        <form method="post" action=".">
-                                            {% csrf_token %}
-                                            <div class="field">
-                                                <label>Stars</label>
-                                                <div class="control">
-                                                    <div class="select">
-                                                        <select name="stars">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3" selected>3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field">
-                                                <label>Content</label>
-                                                <div class="control">
-                                                    <textarea class="textarea" name="content"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="field">
-                                                <div class="control">
-                                                    <button class="button is-success">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    {% else %}
-                                        <p><a href="{% url 'account_login' %}">Log in</a> to add a review!</p>
-                                    {% endif %}
-                                </div>
-                            </div>
+                            
                         </div>
                     </form>
+                    <div class="col-12 mt-5 px-0">
+                        <h4><strong>Reviews</strong></h4>
+                        <div class="list-group">
+                            {% for review in product.reviews.all %}
+                            <a href="#" class="list-group-item list-group-item-action">
+                              <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{review.title}}</h5>
+                              </div>
+                              <p class="mb-1">
+                                Stars: {{review.stars}} /5  
+                                Content: {{review.content}}
+                            </p>
+                              <small class="text-muted">Reviewed by {{review.user}}.</small>
+                            </a>
+                            {% empty %}
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">This product has 0 reviews</h5>
+                                </div>
+                            </a>
+                            {% endfor %}
+                            <a href="{% url 'add_review' product.id %}" class="btn btn-black rounded-0 text-uppercase mt-1">
+                                <span class="text-uppercase">Add a Review</span>
+                            </a>
+                        </div>         
+                    </div>
                 </div>
             </div>  
         </div>

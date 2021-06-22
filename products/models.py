@@ -36,15 +36,17 @@ class Product(models.Model):
         if self.reviews.count() > 0:
             for review in self.reviews.values():
                 total = total + int(review['stars'])
-            return total / self.reviews.count
-        else:
-            return 0
+            count = self.reviews.count()
+            total = total/count
+        return total
 
 
 class ProductReview(models.Model):
-    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
-    name = models.CharField(max_length=254)
+    product = models.ForeignKey(Product, related_name='reviews',
+                                on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='reviews',
+                             on_delete=models.CASCADE)
+    title = models.CharField(max_length=254)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
 

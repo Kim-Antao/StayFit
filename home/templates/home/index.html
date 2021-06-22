@@ -4,9 +4,11 @@
 
 {% block content %}
     <div class="container h-100">
-        <div class="row h-100">
-            <div class="col align-bottom">
-               <h1 class="text-center text-white">Start your fitness journey today!</h1>
+        <div class="row h-100 parent-position">
+            <div class="col child-position">
+               <a href="{% url 'products' %}" class="text-black">
+                <h1 class="text-center main-btn">Start your fitness journey today!</h1>
+               </a>
             </div>
         </div>
     </div>

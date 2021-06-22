@@ -4,7 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from .models import Product, Category
-from .forms import ProductForm
+from .forms import ProductForm, ProductReviewForm
+
+from profiles.models import UserProfile
+from checkout.models import Order, OrderLineItem
 
 
 # Create your views here.
@@ -90,7 +93,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request,
+                           'Failed to update product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -114,3 +118,40 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def add_review(request, product_id):
+    template = 'products/add_review.html'
+    user = request.user
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductReviewForm(
+                                request.POST,
+                                initial={
+                                    'product': product,
+                                    'user': user
+                                    },
+                                )
+        if form.is_valid():
+            productReview = form.save()
+            messages.success(request, 'Successfully added the review!')
+            return redirect(reverse('product_detail', args=[product.id]))
+    else:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        product_bought = profile.orders.lineitems(product=product)
+        if product_bought:
+            form = ProductReviewForm(
+                initial={
+                    'product': product.name,
+                    'user': user.username
+                }
+            )
+        else:
+            messages.error(request,'You need to purchase a product to review it')
+            return redirect(reverse('product_detail', args=[product.id]))
+    context = {
+        'product': product,
+        'form': form,
+    }
+    return render(request, template, context)

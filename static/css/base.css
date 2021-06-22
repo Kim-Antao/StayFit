@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
+
 html {
     height: 100%;
 }
@@ -6,7 +8,8 @@ body {
     background: url('/media/home-situp.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    font-family: 'Lato';
+    
+    font-family: 'DM Serif Text', serif;
 }
 
 .bag-content-spacing {
@@ -42,9 +45,7 @@ body {
 .main-logo-link {
     width: fit-content;
 }
-.navbar-color:hover{
-    text-shadow: 0px 0px 5px rgb(204, 204, 204);
-}
+
 .text-black {
     color: #000 !important;
 }
@@ -56,17 +57,28 @@ body {
     background-color: rgb(255, 123, 0);
 }
 
-.text-white{
-    color: white;
-}
-
 .border-black {
     border: 1px solid black !important;
 }
 
-.btn-black {
+.btn-black{
     background: black;
     color: white;
+}
+
+.main-btn{
+    border-color: white;
+    color: white;
+    font-family: 'DM Serif Text', serif;
+    border-style: solid;
+    border-width: 3px;
+    background-color: #000;
+    transition: 0.3s;
+}
+
+.main-btn:hover,
+.main-btn:active{
+    box-shadow: 3px 3px 8px #fff;
 }
 
 .btn-black:hover,
@@ -98,7 +110,9 @@ body {
 .nav-item{
     margin-left: 18px;
 }
-
+.dropdown-item.active, .dropdown-item:active{
+    background-color: #f8f9fa;
+}
 .overlay {
 	height: 100%;
 	width: 100%;
@@ -111,11 +125,23 @@ body {
 }
 .fixed-after-nav{
     position: fixed;
-    top: 86px;
+    top: 85px;
     right: 0;
     left: 0;
     z-index: 1025;
 }
+
+.parent-position{
+    position: relative;
+}
+.child-position{
+    position: absolute;
+    width: 100%;
+    top: 75%;
+    justify-content: center;
+}
+
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
