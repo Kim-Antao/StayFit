@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Category(models.Model):
 
@@ -48,7 +48,7 @@ class ProductReview(models.Model):
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=254)
     content = models.TextField(blank=True, null=True)
-    stars = models.IntegerField()
+    stars = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
 
     def __str__(self):
         return self.name

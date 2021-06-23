@@ -105,10 +105,12 @@
                             {% for review in product.reviews.all %}
                             <a href="#" class="list-group-item list-group-item-action">
                               <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">{{review.title}}</h5>
+                                <h5 class="mb-1 text-capitalize">{{review.title}}</h5>
                               </div>
+                              <hr class="w-100 mb-2">
                               <p class="mb-1">
                                 Stars: {{review.stars}} /5  
+                                <br>
                                 Content: {{review.content}}
                             </p>
                               <small class="text-muted">Reviewed by {{review.user}}.</small>

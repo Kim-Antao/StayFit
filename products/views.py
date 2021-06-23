@@ -34,6 +34,11 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+            if not products:
+                messages.error(request,
+                               (f'No {query} found!'))
+                return redirect(reverse('products'))
+
     context = {
         'products': products,
         'search_term': query,
@@ -139,17 +144,22 @@ def add_review(request, product_id):
             return redirect(reverse('product_detail', args=[product.id]))
     else:
         profile = get_object_or_404(UserProfile, user=request.user)
-        product_bought = profile.orders.lineitems(product=product)
-        if product_bought:
-            form = ProductReviewForm(
-                initial={
-                    'product': product.name,
-                    'user': user.username
-                }
-            )
-        else:
-            messages.error(request,'You need to purchase a product to review it')
+        orders = Order.objects.all().filter(user_profile=profile.id)
+        if not orders:
+            messages.error(request, 'You need to purchase a product to review it')
             return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            product_bought = orders.lineitems(product=product)
+            if not product_bought:
+                messages.error(request, 'You need to purchase a product to review it')
+                return redirect(reverse('product_detail', args=[product.id]))
+            else:
+                form = ProductReviewForm(
+                    initial={
+                        'product': product.name,
+                        'user': user.username
+                    }
+                )
     context = {
         'product': product,
         'form': form,
