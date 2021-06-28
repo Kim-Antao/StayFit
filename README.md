@@ -1,9 +1,10 @@
 # StayFit
 
-Struggling to gain weight? or Gained a few extra kgs during lockdown? You have come to the right place.
-Waiting for you are an array of things you will need to get back in shape at home.
+Struggling to gain weight? or Gained a few extra kgs during lockdown? or just want to start your fitness journey? You have come to the right place. Waiting for you are an array of things you will need to get back in shape at home. Ranging from accesories to nutrition, you will find all you need in one place.
 
 Stay safe and workout at home 
+
+[Landing page](/media/frontpage.png)
 
 ## UX
 
@@ -44,6 +45,7 @@ Below are some user stories :
 ## Features
 
 ### Existing Features:
+
 * Navigation: allows the user to choose between what they want to acheive by clicking on the tab (code in: base.html).
 
 * Search: allows the user to look for a product by typing any keyword (code in: product.html).
@@ -76,6 +78,7 @@ the username and password
 * Allow only one review per user
 * Option to edit and delete a review
 * Display the newest review first
+* prefill the billing details on checkout page after clicking on apply button when the user doesnot have an account and had filled the details before
 
 ## Technologies Used
 
@@ -144,13 +147,13 @@ Steps taken to deploy this project are as follows:
     1. pip3 install dj_database_url
     1. pip3 install psycog2-binary
     1. pip3 freeze > requirements.txt
-    1. import dj_database_url in virtual_gym/settings.py
-    1. add the default database in virtual_gym/settings.py
+    1. import dj_database_url in stayfir/settings.py
+    1. add the default database in stayfir/settings.py
     1. migrate the changes
-    1. load the data (ex: python3 <span>manage.py</span> loaddata categories)
+    1. load the data (ex: python3 <span>manage.py</span> dumpdata --exclude auth.permission --exclude contenttypes > db.json)
     1. pip3 install gunicorn
     1. pip3 freeze --local > requirements
-    1.  echo web: gunicorn virtual_gym.wsgi:application > Procfile
+    1.  echo web: gunicorn stayfit.wsgi:application > Procfile
     1. heroku login  
     1. in <span>settings.py</span> add the link in allowed host
     1. git add .

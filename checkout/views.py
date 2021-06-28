@@ -62,8 +62,8 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             if discount:
-                print(discount['discount_code'])
                 order.used_coupon = discount['discount_code']
+                del request.session['discount']
             order.save()
             for item_id, item_data in bag.items():
                 try:
@@ -243,13 +243,10 @@ def apply_coupon(request):
                 discount['discount_percent'] = coupon.percent
                 discount['discount_code'] = coupon.code
                 request.session['discount'] = discount
-                print("valid")
             else:
                 messages.error(request, 'Incorrect coupon code')
-                print("invalid")
 
         else:
             messages.error(request, 'Incorrect coupon code')
-            print("invalid 1")
 
     return redirect(reverse('checkout'))

@@ -4,7 +4,9 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 from django_countries.fields import CountryField
+from django.shortcuts import get_object_or_404
 
+from decimal import Decimal
 from datetime import datetime, timedelta
 from profiles.models import UserProfile
 from products.models import Product
@@ -35,6 +37,8 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
     used_coupon = models.CharField(max_length=50, null=True, blank=True)
+    discount = models.DecimalField(max_digits=10, decimal_places=2, null=True,
+                                   blank=True)
 
     def _generate_order_number(self):
         """
@@ -54,13 +58,16 @@ class Order(models.Model):
         else:
             self.delivery_cost = 0
         if self.used_coupon:
-            """
-            find that code in coupon model
-            discount_per = percent
-            discount_value = self.order_total * (discount_per/100)
-            self.grand_total = self.order_total + self.delivery_cost - discount_value
-            """
-        self.grand_total = self.order_total + self.delivery_cost
+            coupon = get_object_or_404(Coupon, code=self.used_coupon)
+            discount_per = coupon.percent
+            discount_value = self.order_total * Decimal(discount_per/100)
+            self.discount = discount_value
+            self.grand_total = (self.order_total +
+                                self.delivery_cost -
+                                discount_value)
+        else:
+            self.discount = 0
+            self.grand_total = self.order_total + self.delivery_cost
         self.save()
 
     def save(self, *args, **kwargs):

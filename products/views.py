@@ -7,7 +7,7 @@ from .models import Product, Category
 from .forms import ProductForm, ProductReviewForm
 
 from profiles.models import UserProfile
-from checkout.models import Order, OrderLineItem
+from checkout.models import Order
 
 
 # Create your views here.
@@ -142,7 +142,7 @@ def add_review(request, product_id):
                                     },
                                 )
         if form.is_valid():
-            productReview = form.save()
+            form.save()
             messages.success(request, 'Successfully added the review!')
             return redirect(reverse('product_detail', args=[product.id]))
     else:

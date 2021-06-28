@@ -116,10 +116,14 @@
                               <small class="text-muted">Reviewed by {{review.user}}.</small>
                             </a>
                             {% empty %}
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">This product has 0 reviews</h5>
+                            <a href="#" class="list-group-item list-group-item-action no-reviews-container-size">
+                                <div class="d-flex w-100 justify-content-between ">
+                                    <h5 class="mb-1">0 reviews</h5>
                                 </div>
+                                <hr class="w-100 mb-2">
+                                <p class="mb-1">
+                                    Be the first one to review this product
+                                </p>
                             </a>
                             {% endfor %} 
                         </div> 
