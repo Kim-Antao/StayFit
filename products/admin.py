@@ -22,7 +22,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductReviewAdmin(admin.ModelAdmin):
-    list_display =(
+    list_display = (
         'product',
         'user',
         'title',

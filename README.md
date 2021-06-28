@@ -44,36 +44,38 @@ Below are some user stories :
 ## Features
 
 ### Existing Features:
-Navigation: allows the user to choose between what they want to acheive by clicking on the tab (code in: base.html).
+* Navigation: allows the user to choose between what they want to acheive by clicking on the tab (code in: base.html).
 
-Search: allows the user to look for a product by typing any keyword (code in: product.html).
+* Search: allows the user to look for a product by typing any keyword (code in: product.html).
 
-Buy products: allows users to buy a product by entering the checkout form (code in: checkout app)
+* Buy products: allows users to buy a product by entering the checkout form (code in: checkout app)
 
-rating: allows the user to rate the products if they have logged in (code in: product app)
+* Rating: allows the user to rate the products if they have logged in (code in: product app)
 
-profile: allows the user to view their user details and the order details (code in: profile app)
+* Adding coupon code: allows the user to add a coupon code at checkout (code in: checkout app)
 
-save details: allows the user to save their checkout information (code in: checkout app)
+* Profile: allows the user to view their user details and the order details (code in: profile app)
 
-subscribe: allows the users to choose subscription plans and choose the period of payment
+* Save details: allows the user to save their checkout information (code in: checkout app)
 
-activity board: allows the users to view the progress of other members
-
-login/signup: allows the users to login to an account/create an account to buy products and services by filling out 
+* Login/signup: allows the users to login to an account/create an account to buy products and services by filling out 
 the username and password
 
 ### Features Left to Implement
-* Have a chart to display the activity board information in a more user friendly way 
+
+#### Additional Features
+* A subscription service for excercise and nutrition plan
+* Trial period feature for subscription
+* An activity board showing the user's progress
+* Sorting feature on products page
+
+#### Improvements on existing features
 * Display product deals
-* calculate BMI instead of asking the user
-* Display a message to let the user know that the rating has been saved
 * Option to choose different size of Nutrition products
 * Display more than one image per product
-* Option to apply discount codes
-* Trial period feature for subscription
-* Allow the site owner to add, update and delete plans
-* Sorting feature on products page
+* Allow only one review per user
+* Option to edit and delete a review
+* Display the newest review first
 
 ## Technologies Used
 
@@ -87,16 +89,18 @@ the username and password
 
 **Django:** [Django](https://www.djangoproject.com/) is a python based framework which was used in this project as it follows the Model Template View architectural pattern
 
+**JQuery:** [JQuery](https://jquery.com/) was used to simplify DOM manipulation.
+
 **Bootstrap:** [Bootstrap](https://getbootstrap.com/) was used to create responsive webpages with the help of pre built classes
 
 **FontAwesome:** [FontAwesome](https://fontawesome.com/) was used for icons
+
+**Canva:** [Canva](https://www.canva.com/en_gb/) was used to make the logo.
 
 **Stripe:** [Stripe](https://stripe.com/gb?utm_campaign=paid_brand-UK%20%7C%20en%20%7C%20Search%20%7C%20Brand%20%7C%20Stripe&utm_medium=cpc&utm_source=bing&utm_content=&utm_term=EXA_Stripe%20General-stripe-e&utm_adposition=&utm_device=c&utm_content=xR7wn1XB-dc|pcrid|79164938360905|pkw|stripe|pmt|be|slid||productid||pgrid|1266637841642678|ptaid|kwd-79165156391371:loc-188|&msclkid=080ea1556ff41fee9c45fec9d0e69058)
 was used to implement single and subscription payment methods.
 
 **Balsamiq:** [Balsamiq](https://balsamiq.com/) was used to create wireframe. It was used in the initial stages of the project visualisation. It was used to put the idea of a page decide the layout and flow of the project. 
-
-**JQuery:** [JQuery](https://jquery.com/) was used to simplify DOM manipulation.
 
 ## Testing
 
@@ -117,6 +121,7 @@ Try to submit the form with all inputs valid and verify that the success message
 **Checkout form:**  
 Try to submit the required fields with no data and verify that an error message is displayed.  
 Try to submit the form with incorrect bank details and verify that an error message is displayed.
+Try to submit the form with incorrect coupon code and verify that an error message is displayed.
 
 **Add product:**  
 Try to add a product with required field left blank and verify that the appropriate message appears  
@@ -136,7 +141,7 @@ This project is used using [Heroku](https://dashboard.heroku.com/apps).
 Steps taken to deploy this project are as follows:  
 * Create an app in Heroku  
 * In the terminal typed the follow commands:  
-    1.  pip3 install dj_database_url
+    1. pip3 install dj_database_url
     1. pip3 install psycog2-binary
     1. pip3 freeze > requirements.txt
     1. import dj_database_url in virtual_gym/settings.py
@@ -185,6 +190,7 @@ The backdrop image is taken from:
 * [JustDjango](https://www.youtube.com/watch?v=zu2PBUHMEew&t=1803s)
 * [Forms](https://www.youtube.com/watch?v=3XOS_UpJirU&feature=emb_logo)
 * [Django Lessons](https://www.youtube.com/watch?v=Mw__Pw1iGgA)
+* [Code with Stein](https://codewithstein.com/)
 
 I received inspiration for this project from:  
 * [Fiit Gym](https://fiit.tv/)
