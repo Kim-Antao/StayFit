@@ -204,12 +204,21 @@ body {
     border-bottom-color: #343a40 !important;
 }
 
-.bag-notification-wrapper {
+.bag-notification-wrapper{
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
+.review_wrapper {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.list-group-item{
+    border-bottom: 1px solid rgba(0,0,0,0.5) !important;
+}
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {

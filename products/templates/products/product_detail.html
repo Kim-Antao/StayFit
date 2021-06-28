@@ -32,7 +32,7 @@
                     <p class="mb-0"><h4>{{ product.name }}</h4></p>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                     {% if product.get_rating %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.get_rating }} / 5</small>
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.get_rating | floatformat:2 }} / 5</small>
                     {% else %}
                         <small class="text-muted">No Rating</small>
                     {% endif %}
@@ -101,7 +101,7 @@
                     </form>
                     <div class="col-12 mt-5 px-0">
                         <h4><strong>Reviews</strong></h4>
-                        <div class="list-group">
+                        <div class="list-group review_wrapper">
                             {% for review in product.reviews.all %}
                             <a href="#" class="list-group-item list-group-item-action">
                               <div class="d-flex w-100 justify-content-between">
@@ -121,11 +121,11 @@
                                     <h5 class="mb-1">This product has 0 reviews</h5>
                                 </div>
                             </a>
-                            {% endfor %}
-                            <a href="{% url 'add_review' product.id %}" class="btn btn-black rounded-0 text-uppercase mt-1">
-                                <span class="text-uppercase">Add a Review</span>
-                            </a>
-                        </div>         
+                            {% endfor %} 
+                        </div> 
+                        <a href="{% url 'add_review' product.id %}" class="btn btn-black rounded-0 text-uppercase mt-1 mb-5 w-100">
+                            <span class="text-uppercase">Add a Review</span>
+                        </a>        
                     </div>
                 </div>
             </div>  

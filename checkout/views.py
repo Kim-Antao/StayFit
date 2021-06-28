@@ -4,8 +4,9 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
+from decimal import Decimal
 from .forms import OrderForm
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, Coupon
 from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
@@ -35,9 +36,12 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    usedcoupon = ""
 
     if request.method == 'POST':
+
         bag = request.session.get('bag', {})
+        discount = request.session.get('discount', {})
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -57,6 +61,9 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
+            if discount:
+                print(discount['discount_code'])
+                order.used_coupon = discount['discount_code']
             order.save()
             for item_id, item_data in bag.items():
                 try:
@@ -79,7 +86,8 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your bag wasn't found in our \
+                         database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -87,18 +95,32 @@ def checkout(request):
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
+
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(request,
+                           "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
-        total = current_bag['grand_total']
+
+        discount = request.session.get('discount', {})
+        if not discount:
+            discount_val = 0
+            total = current_bag['grand_total']
+        else:
+            discount_val = ((current_bag['total']) *
+                            Decimal(discount['discount_percent']/100))
+            total = (current_bag['total'] -
+                     discount_val +
+                     current_bag['delivery'])
+
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
@@ -106,9 +128,15 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        # Attempt to prefill the form with any info the user maintains in
+        # their profile
         if request.user.is_authenticated:
             try:
+                discount = request.session.get('discount', {})
+
+                if discount:
+                    usedcoupon = discount['discount_code']
+
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
@@ -120,11 +148,29 @@ def checkout(request):
                     'street_address1': profile.default_street_address1,
                     'street_address2': profile.default_street_address2,
                     'county': profile.default_county,
+                    'used_coupon': usedcoupon,
                 })
             except UserProfile.DoesNotExist:
-                order_form = OrderForm()
+                discount = request.session.get('discount', {})
+
+                if discount:
+                    usedcoupon = discount['discount_code']
+
+                order_form = OrderForm(initial={
+                    'used_coupon': usedcoupon,
+                })
         else:
-            order_form = OrderForm()
+            discount = request.session.get('discount', {})
+
+            if discount:
+                usedcoupon = discount['discount_code']
+
+            order_form = OrderForm(initial={
+                'used_coupon': usedcoupon,
+                })
+
+        # if discount:
+        #    del request.session['discount']
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -135,6 +181,8 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        'discount_val': discount_val,
+        'total_after_discount': total,
     }
 
     return render(request, template, context)
@@ -181,3 +229,27 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def apply_coupon(request):
+    if request.method == 'POST':
+        current_coupon = request.POST['used_coupon']
+        coupon_check = Coupon.objects.filter(code=current_coupon)
+        discount = {}
+        if coupon_check:
+            coupon = get_object_or_404(Coupon, code=current_coupon)
+            validity = coupon.can_use()
+            if validity is True:
+                discount['discount_percent'] = coupon.percent
+                discount['discount_code'] = coupon.code
+                request.session['discount'] = discount
+                print("valid")
+            else:
+                messages.error(request, 'Incorrect coupon code')
+                print("invalid")
+
+        else:
+            messages.error(request, 'Incorrect coupon code')
+            print("invalid 1")
+
+    return redirect(reverse('checkout'))

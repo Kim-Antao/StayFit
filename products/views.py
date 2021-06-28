@@ -31,7 +31,8 @@ def all_products(request):
                                "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (Q(name__icontains=query) |
+                       Q(description__icontains=query))
             products = products.filter(queries)
 
             if not products:
@@ -72,7 +73,8 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add product. Please ensure the \
+                           form is valid.')
     else:
         form = ProductForm()
     template = 'products/add_product.html'
@@ -99,7 +101,8 @@ def edit_product(request, product_id):
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request,
-                           'Failed to update product. Please ensure the form is valid.')
+                           'Failed to update product. Please ensure the form \
+                            is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -144,22 +147,27 @@ def add_review(request, product_id):
             return redirect(reverse('product_detail', args=[product.id]))
     else:
         profile = get_object_or_404(UserProfile, user=request.user)
-        orders = Order.objects.all().filter(user_profile=profile.id)
-        if not orders:
-            messages.error(request, 'You need to purchase a product to review it')
+        item_purchased = False
+        user_orders = Order.objects.filter(user_profile=profile)
+
+        for orders in user_orders:
+            purchased_products = orders.lineitems.all()
+            product_to_review = purchased_products.filter(product=product)
+            if product_to_review:
+                item_purchased = True
+
+        if item_purchased is False:
+            messages.error(request, 'You need to purchase a product to review \
+                           it')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            product_bought = orders.lineitems(product=product)
-            if not product_bought:
-                messages.error(request, 'You need to purchase a product to review it')
-                return redirect(reverse('product_detail', args=[product.id]))
-            else:
-                form = ProductReviewForm(
-                    initial={
-                        'product': product.name,
-                        'user': user.username
-                    }
-                )
+            form = ProductReviewForm(
+                initial={
+                    'product': product.name,
+                    'user': user.username
+                }
+            )
+
     context = {
         'product': product,
         'form': form,

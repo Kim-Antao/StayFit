@@ -1,28 +1,18 @@
 # StayFit
 
 Struggling to gain weight? or Gained a few extra kgs during lockdown? You have come to the right place.
-Waiting for you is a customised excercise and nutrition plan-all you need to get back in shape at home.
-
-
-Subscribe and see other members reach their targets.  
-#motivate_and_get_motivated.
+Waiting for you are an array of things you will need to get back in shape at home.
 
 Stay safe and workout at home 
 
 ## UX
 
-This service is created keeping into consideration all dietary requirements.
-The user is provided with a list of subscriptions to choose from. 
-
-
 Below are some user stories :
 1. __User wants to signup :__   
-    User will choose the signup option from the navigation, fill the fields and click on the signup button. if the field values are valid, a confirmation
-    email will be sent to the user. Upon confirmation, the user's information will be stored on their profile page
+    User will choose the signup option from the navigation, fill the fields and click on the signup button. if the field values are valid, a confirmation email will be sent to the user. Upon confirmation, the user's information will be stored on their profile page
 
 1. __User wants to login :__   
-    User chooses login from navigation, will be redirected to the login form. The user will enter the details and press on submit. If the values are correct,
-    the user will be logged in to the system
+    User chooses login from navigation, will be redirected to the login form. The user will enter the details and press on submit. If the values are correct, the user will be logged in to the system
 
 1. __User wants to update his profile :__   
     User clicks on my account in the navigation, chooses profile. Updates the desired fields, If the values entered are valid, a success message will be displayed.
@@ -30,21 +20,16 @@ Below are some user stories :
 
 1. __User wants to buy a product :__  
     User chooses the desired option from the shop button in the navbar then selects the product which takes the user to the product detail page.
-    User can then choose the size (if applicable) and the quanity and click on add to bag. Here user can update his/her bag contents by changing the quantity and clicking on update or clicking on remove to delete the item from the bag. User then clicks on the checkout button, which will ask the customer to enter details. If the card details are wrong, an error message will be displayed and if the payment is successful, a confirmation message will be displayed, which will contain all the order and delivery details. User will also receive a confirmation email mentioning the order details.
+    User can then choose the size (if applicable) and the quanity and click on add to bag. Here user can update his/her bag contents by changing the quantity and clicking on update or clicking on remove to delete the item from the bag. User then clicks on the checkout button, which will ask the customer to enter billing details. If the card details are wrong, an error message will be displayed and if the payment is successful, a confirmation message will be displayed, which will contain all the order and delivery details. User will also receive a confirmation email mentioning the order details.
+
+1. __User wants to use a coupon code :__  
+    On the checkout page, under the billing details, the user is given the option of adding a coupon code. Once clicked on apply, if the code is valid, the grand total on the right hand side will show the updated value and if the code entered was incorrect an error message will be displayed.
       
 2. __User wants to rate an item:__  
-    User logs in. User chooses the desired option from the shop button in the navbar then selects the product which takes the user to the product detail page.
-    User fills the review form and clicks on submit. If submitted without rating, an error message will appear, telling the user that the minimum rating is 1. If submitted with correct rating values, the values are stored in the database.
+    User logs in. User chooses the desired option from the shop button in the navbar then selects the product which takes the user to the product detail page. User fills the review form and clicks on submit. If submitted without rating, an error message will appear. If submitted with correct rating values, the values are stored in the database.
 
 1. __User wants to view the previous order :__ 
     User will login from the navigation, go to the profile page, if there have been orders made in the past, the details will be displayed in the table next to their delivery information.
-
-1. __User wants to buy a subscription :__ 
-    user chooses between excercise and nutrition plan, a list of plans are then displayed chooses the desired service, gets redirected to a registration page if logged in. if not logged in, the user will be asked to login. upon registration, if the user doesnt have an active subscription for the same plan, it will lead him up to the billing page. Once the form is submitted, if all details entered are valid,
-    it will print a success message.
-
-1. __User wants to view activity board :__ 
-    user clicks on account and chooses activity board from the dropdown. A page is displayed with all the members and the membership they chose.
 
 1. __User wants to log out :__ 
     User chooses the logout option from the navigation, a page will be displayed asking the user if they are sure, if yes they will be logged out of the system.
