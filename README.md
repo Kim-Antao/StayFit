@@ -4,7 +4,7 @@ Struggling to gain weight? or Gained a few extra kgs during lockdown? or just wa
 
 Stay safe and workout at home 
 
-[Landing page](/media/frontpage.png)
+(/media/frontpage.png)
 
 ## UX
 
