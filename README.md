@@ -4,7 +4,7 @@ Struggling to gain weight? or Gained a few extra kgs during lockdown? or just wa
 
 Stay safe and workout at home 
 
-[Landing page](/media/frontpage.png)
+![Landing page](/media/frontpage.png)
 
 ## UX
 
@@ -47,21 +47,43 @@ Below are some user stories :
 ### Existing Features:
 
 * Navigation: allows the user to choose between what they want to acheive by clicking on the tab (code in: base.html).
+![Navigation](/media/navigation.png)
+
+* Homepage: displays a image of a lady working out at home and a link to the products
+![Homepage](/media/homepage.png)
+
+* Product page: displays a list of all products with basic information that the user can buy from the site
+![Product page](/media/product_page.png)
 
 * Search: allows the user to look for a product by typing any keyword (code in: product.html).
+![Search page](/media/search.png)
+
+* Product detail page: displays a detailed information about the product chosen and the option to add different quantities and/or sizes to the bag
+![Product detail page](/media/product_detail.png)
+
+* Review: allows the user to add a review for a product if they have logged in and have bought the product. (code in: product app)
+![Review page](/media/add_review.png)
+
+* Shopping Bag: displays all the products chosen by the user with the quantities and prices. (code in: bag app)
+![Shopping page](/media/shopping_bag.png)
 
 * Buy products: allows users to buy a product by entering the checkout form (code in: checkout app)
+![Checkout page](/media/checkout.png)
 
-* Rating: allows the user to rate the products if they have logged in (code in: product app)
+* Save details: allows the user to save their billing information(code in: checkout app)
+![Save Details](/media/save_details.png)
 
-* Adding coupon code: allows the user to add a coupon code at checkout (code in: checkout app)
+* Adding coupon code: allows the user to add a coupon code at checkout. If valid the discount is added to the grand total. (code in: checkout app)
+![Coupon](/media/coupon.png)
 
 * Profile: allows the user to view their user details and the order details (code in: profile app)
+![Profile page](/media/profile.png)
 
-* Save details: allows the user to save their checkout information (code in: checkout app)
-
-* Login/signup: allows the users to login to an account/create an account to buy products and services by filling out 
-the username and password
+* Register/Login: allows the users to create an account/login to an account to buy products and to add a review
+Register:
+![Signup page](/media/signup.png)
+Login:
+![Signin page](/media/signin.png)
 
 ### Features Left to Implement
 
