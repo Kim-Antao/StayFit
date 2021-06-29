@@ -199,8 +199,6 @@ Steps taken to deploy this project are as follows:
     1. set the secret keys
 
  
-* All the environment values have been saved in the env.py file
-
 ## Credits
 
 
@@ -219,11 +217,7 @@ The backdrop image is taken from:
 
 
 ## Acknowledgements
-* [Reviews](https://www.youtube.com/channel/UCfVoYvY8BfTDeF63JQmQJvg)
-* [JustDjango](https://www.youtube.com/watch?v=zu2PBUHMEew&t=1803s)
-* [Forms](https://www.youtube.com/watch?v=3XOS_UpJirU&feature=emb_logo)
-* [Django Lessons](https://www.youtube.com/watch?v=Mw__Pw1iGgA)
-* [Code with Stein](https://codewithstein.com/)
+* [Code with Stein](https://codewithstein.com/): inspiration for reviews and coupon codes
 
 I received inspiration for this project from:  
 * [Fiit Gym](https://fiit.tv/)
