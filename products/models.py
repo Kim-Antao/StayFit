@@ -53,4 +53,4 @@ class ProductReview(models.Model):
                                 MaxValueValidator(5)])
 
     def __str__(self):
-        return self.name
+        return self.title

@@ -97,10 +97,12 @@ Login:
 * Display product deals
 * Option to choose different size of Nutrition products
 * Display more than one image per product
+* In review section display stars in place of the current input field
 * Allow only one review per user
 * Option to edit and delete a review
 * Display the newest review first
 * prefill the billing details on checkout page after clicking on apply button when the user doesnot have an account and had filled the details before
+* If the user clicks on checkout without clicking apply (button for coupon code), add the code when user clicks on checkout
 
 ## Technologies Used
 
@@ -143,10 +145,16 @@ Try to submit the form with invalid field values and verify that a relevant erro
 Try to submit the form with user details not present in the database and verify that a relevant error message appears.  
 Try to submit the form with all inputs valid and verify that the success message appears. 
 
+**Review form:**  
+Try to submit the required fields with no data and verify that an error message is displayed.  
+Try to submit the form with star value less than 1 and more than 5.
+Try to submit the form with all inputs valid and verify that the success message appears. 
+
 **Checkout form:**  
 Try to submit the required fields with no data and verify that an error message is displayed.  
-Try to submit the form with incorrect bank details and verify that an error message is displayed.
 Try to submit the form with incorrect coupon code and verify that an error message is displayed.
+Try to submit the form with incorrect bank details and verify that an error message is displayed.
+Submit with correct values, check if the order goes through and the grand total passed to stripe matches the one displayed on success page
 
 **Add product:**  
 Try to add a product with required field left blank and verify that the appropriate message appears  
@@ -169,10 +177,10 @@ Steps taken to deploy this project are as follows:
     1. pip3 install dj_database_url
     1. pip3 install psycog2-binary
     1. pip3 freeze > requirements.txt
-    1. import dj_database_url in stayfir/settings.py
-    1. add the default database in stayfir/settings.py
+    1. import dj_database_url in stayfit/settings.py
+    1. add the default database in stayfit/settings.py
     1. migrate the changes
-    1. load the data (ex: python3 <span>manage.py</span> dumpdata --exclude auth.permission --exclude contenttypes > db.json)
+    1. load the data (ex: python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json)
     1. pip3 install gunicorn
     1. pip3 freeze --local > requirements
     1.  echo web: gunicorn stayfit.wsgi:application > Procfile
