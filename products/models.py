@@ -49,7 +49,7 @@ class ProductReview(models.Model):
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=254)
     content = models.TextField(blank=True, null=True)
-    stars = models.IntegerField(validators=[MinValueValidator(0),
+    stars = models.IntegerField(validators=[MinValueValidator(1),
                                 MaxValueValidator(5)])
 
     def __str__(self):

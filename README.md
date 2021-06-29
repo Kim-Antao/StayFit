@@ -101,6 +101,7 @@ Login:
 * Allow only one review per user
 * Option to edit and delete a review
 * Display the newest review first
+* For the contact number in all the forms: have a country selector and auto format using input masking. 
 * prefill the billing details on checkout page after clicking on apply button when the user doesnot have an account and had filled the details before
 * If the user clicks on checkout without clicking apply (button for coupon code), add the code when user clicks on checkout
 

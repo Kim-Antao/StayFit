@@ -63,7 +63,7 @@ class Order(models.Model):
             discount_value = self.order_total * Decimal(discount_per/100)
             self.discount = discount_value
             self.grand_total = (self.order_total +
-                                self.delivery_cost -
+                                Decimal(self.delivery_cost) -
                                 discount_value)
         else:
             self.discount = 0
