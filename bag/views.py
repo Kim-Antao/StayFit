@@ -95,15 +95,21 @@ def remove_from_bag(request, item_id):
         size = None
         if 'product_size' in request.POST:
             size = request.POST['product_size']
+            print(size)
+        else:
+            print("no")
         bag = request.session.get('bag', {})
-
+        print(bag)
         if size:
+            print("has sizes")
+            print(bag[item_id]['items_by_size'][size])
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(request, f'Removed size {size.upper()} \
                              {product.name} from your bag')
         else:
+            print("no sizes")
             bag.pop(item_id)
             messages.success(request, f'Removed {product.name} from your bag')
 

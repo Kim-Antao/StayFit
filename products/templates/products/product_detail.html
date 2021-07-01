@@ -29,9 +29,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mt-md-5">
-                    <p class="mb-0">
+                    <div class="mb-0">
                         <h4>{{ product.name }}</h4>
-                    </p>
+                    </div>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                     {% if product.get_rating %}
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.get_rating | floatformat:2 }} / 5</small>
