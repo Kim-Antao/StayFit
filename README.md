@@ -132,6 +132,10 @@ was used to implement single and subscription payment methods.
 
 ## Testing
 
+The W3C Markup Validator Service and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+* [W3C Markup Validator](https://validator.w3.org/)
+* [W3C CSS Validator ](https://jigsaw.w3.org/css-validator/#validate_by_upload)
+
 Manual testing was done on all the forms of this project
 
 **Sign form:**  
@@ -168,31 +172,39 @@ Click on the link to delete and verify that the product gets deleted from the da
 Try to edit a product with required field left blank and verify that the appropriate message appears  
 Try to edit a product with valid field values and verify that they are saved in the database
 
+### Further Testing
+The Website was tested on Google Chrome and Microsoft Edge.
+The website was viewed on a variety of devices such as Laptop & samsungA51.
+A large amount of testing was done to ensure that all pages were linking correctly.
+Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
 
 ## Deployment
 
 This project is used using [Heroku](https://dashboard.heroku.com/apps).  
 Steps taken to deploy this project are as follows:  
 * Create an app in Heroku  
-* In the terminal typed the follow commands:  
+* Used the following commands:  
     1. pip3 install dj_database_url
     1. pip3 install psycog2-binary
     1. pip3 freeze > requirements.txt
-    1. import dj_database_url in stayfit/settings.py
-    1. add the default database in stayfit/settings.py
-    1. migrate the changes
+* import dj_database_url in stayfit/settings.py
+* add the default database in stayfit/settings.py
+* migrate the changes
+* load the data from the local database
     1. load the data (ex: python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json)
+* followed with terminal commands
     1. pip3 install gunicorn
     1. pip3 freeze --local > requirements
     1.  echo web: gunicorn stayfit.wsgi:application > Procfile
+* push to heroku
     1. heroku login  
     1. in <span>settings.py</span> add the link in allowed host
     1. git add .
     1. git commit -m "initial commit"
     1. heroku git ::remote
     1. git push heroku master
-    1. create an AWS account
-    1. connect Django to s3
+* create an AWS account
+* connect Django to s3
     
 * In the herko app, go to settings:
     1. IP = 0.0.0.0
