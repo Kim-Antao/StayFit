@@ -8,7 +8,6 @@ body {
     background: url('/media/home-situp.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    
     font-family: 'DM Serif Text', serif;
 }
 
@@ -18,12 +17,6 @@ body {
 
 .content-spacing{
     margin-top: 200px;
-}
-
-.icon-edit{
-    background: url('/media/logo.png');    
-    background-size: contain;
-   
 }
 
 .align-bottom{
@@ -120,7 +113,7 @@ body {
 	left: 0;
 	position: fixed;
     background: white;
-    opacity: 0.5;
+    opacity:1;
     z-index: -1;
 }
 .fixed-after-nav{
